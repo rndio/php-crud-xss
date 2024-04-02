@@ -1,0 +1,22 @@
+on:
+  push:
+    branches: 
+      - main
+name: 🚀 Auto Deploy
+jobs:
+  web-deploy:
+    name: 🎉 Auto Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Checkout ( Get latest code )
+      uses: actions/checkout@v4.1.1
+
+    - name: 📂 Sync files
+      uses: burnett01/rsync-deployments@6.0.0
+      with:
+        switches: -avzr --delete --exclude=".git" --exclude=".github"
+        path: /
+        remote_path: ${{ secrets.SECRET_PATH }}
+        remote_host: ${{ secrets.SECRET_HOST }}
+        remote_user: ${{ secrets.SECRET_USER }}
+        remote_key: ${{ secrets.SECRET_KEY }}
