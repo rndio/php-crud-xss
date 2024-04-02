@@ -1,6 +1,6 @@
 <?php
 
-const BASE_DIR = __DIR__ . '\..\..\\';
+const BASE_DIR = __DIR__ . '/../../';
 include_once(BASE_DIR . 'app/core/conn.php');
 
 session_start();
